@@ -11,7 +11,6 @@ import com.hadir.web2.config.AutomationFrameworkConfig;
 import com.hadir.web2.drivers.DriverSingleton;
 import com.hadir.web2.pages.LoginPage;
 import com.hadir.web2.utils.ConfigurationProperties;
-import com.hadir.web2.utils.Constants;
 import com.hadir.web2.utils.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -22,19 +21,17 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 
-@CucumberContextConfiguration
 @ContextConfiguration(classes = AutomationFrameworkConfig.class)
-public class LoginStepDefinition {
+public class LoginInvalidStepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
 	ExtentTest extentTest;
-	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportLogin.html");
+	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportLoginInvalid.html");
 
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -43,7 +40,8 @@ public class LoginStepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
-		extentTest = reports.startTest("Testing User Login");
+		extentTest = reports.startTest("Testing User Login Invalid");
+
 	}
 
 	@AfterStep
@@ -65,24 +63,23 @@ public class LoginStepDefinition {
 //		driver.quit();
 	}
 
-	@Given("User mengakses url")
-	public void user_mengakses_url() {
-		driver = DriverSingleton.getDriver();
-		driver.get(Constants.URL);
-		extentTest.log(LogStatus.PASS, "Navigating to " + Constants.URL);
+	@When("User melakukan logout")
+	public void user_melakukan_logout() {
+		loginPage.logoutAction();
+		extentTest.log(LogStatus.PASS, "User melakukan logout");
 	}
 
-	@When("User klik login button")
-	public void user_klik_login_button() {
-		loginPage.submitLogin(configurationProperties.getUserName(), configurationProperties.getPassword());
-		extentTest.log(LogStatus.PASS, "User klik login button");
+	@And("User kembali melakukan login")
+	public void user_kembali_melakukan_login() {
+		loginPage.submitLogin("user", "user1234");
+		extentTest.log(LogStatus.PASS, "User kembali melakukan login");
 	}
 
-	@Then("User berhasil login")
-	public void user_berhasil_login() {
+	@Then("User tidak berhasil login")
+	public void user_tidak_berhasil_login() {
 		tunggu();
-		assertEquals(configurationProperties.getTextDashboard(), loginPage.getTextDashboard());
-		extentTest.log(LogStatus.PASS, "User berhasil login");
+		assertEquals(configurationProperties.getTextInvalidLogin(), loginPage.getTextInvalidLogin());
+		extentTest.log(LogStatus.PASS, "User tidak berhasil login");
 	}
 
 	public static void tunggu() {

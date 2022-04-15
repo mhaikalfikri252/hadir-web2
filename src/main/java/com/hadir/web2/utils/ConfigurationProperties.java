@@ -11,7 +11,7 @@ public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
 
-	@Value("${username}")
+	@Value("${usernamee}")
 	private String userName;
 
 	@Value("${password}")
