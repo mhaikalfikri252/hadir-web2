@@ -34,7 +34,7 @@ public class ApprovalIzinStepDefinition {
 	private LoginPage loginPage;
 	private ApprovallzinPage approvallzinPage;
 	ExtentTest extentTest;
-	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportApprovalizin.html");
+	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportApprovalIzin.html");
 
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -74,7 +74,7 @@ public class ApprovalIzinStepDefinition {
 	}
 
 	@When("Admin akses login")
-	public void Admin_akses_login() {
+	public void admin_akses_login() {
 		loginPage.submitLogin(configurationProperties.getUserName(), configurationProperties.getPassword());
 		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
