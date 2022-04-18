@@ -1,10 +1,7 @@
-Feature: Customer Login to Astro
+Feature: User Login Valid to Astro
 
-  Scenario: Testing Login Customer Valid
-    Given Customer mengakses url
-    When Customer klik login button
-    Then Customer berhasil login
+  Scenario: Testing Login User Valid
+    Given User mengakses url
+    When User klik login button
+    Then User berhasil login
 
-  Scenario: Testing Login Customer Invalid
-    When Customer klik login button
-    Then Customer berhasil login
