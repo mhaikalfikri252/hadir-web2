@@ -29,6 +29,9 @@ public class ConfigurationProperties {
 	@Value("${textApprovalIzin}")
 	private String textApprovalIzin;
 
+	@Value("${textnationalHoliday}")
+	private String textnationalHoliday;
+	
 	public String getBrowser() {
 		return browser;
 	}
@@ -56,5 +59,11 @@ public class ConfigurationProperties {
 	public String getTextApprovalIzin() {
 		return textApprovalIzin;
 	}
+
+	public String getTextnationalHoliday() {
+		return textnationalHoliday;
+	}
+	
+	
 
 }
