@@ -10,6 +10,7 @@ import com.hadir.web2.config.AutomationFrameworkConfig;
 import com.hadir.web2.drivers.DriverSingleton;
 import com.hadir.web2.pages.ApprovallzinPage;
 import com.hadir.web2.pages.LoginPage;
+import com.hadir.web2.pages.NationalHolidayPage;
 import com.hadir.web2.utils.ConfigurationProperties;
 import com.hadir.web2.utils.Constants;
 import com.hadir.web2.utils.Utils;
@@ -28,13 +29,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 @ContextConfiguration(classes = AutomationFrameworkConfig.class)
-public class ApprovalIzinStepDefinition {
-
+public class NationalHolidayStepDefinition {
+	
 	private static WebDriver driver;
 	private LoginPage loginPage;
-	private ApprovallzinPage approvallzinPage;
+	private NationalHolidayPage ntnlHoliday;
 	ExtentTest extentTest;
-	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportApprovalizin.html");
+	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportNationalHoliday.html");
 
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -43,8 +44,8 @@ public class ApprovalIzinStepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
-		approvallzinPage = new ApprovallzinPage();
-		extentTest = reports.startTest("Testing Approval Izin Page");
+		ntnlHoliday = new NationalHolidayPage();
+		extentTest = reports.startTest("Testing National Holiday Page");
 	}
 
 	@AfterStep
@@ -66,53 +67,60 @@ public class ApprovalIzinStepDefinition {
 //		driver.quit();
 	}
 
-	@Given("Admin access url")
-	public void admin_akses_url() {
+	@Given("Admin akses url")
+	public void Admin_access_url() {
 		driver = DriverSingleton.getDriver();
 		driver.get(Constants.URL);
 		extentTest.log(LogStatus.PASS, "Navigating to " + Constants.URL);
 	}
 
-	@When("Admin akses login")
+	@When("Admin access login")
 	public void Admin_akses_login() {
 		loginPage.submitLogin(configurationProperties.getUserName(), configurationProperties.getPassword());
 		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
 
-	@When("Admin akses approval izin")
-	public void admin_akses_approval_izin_button() {
-		approvallzinPage.goToApprovalIzinPage();
-		extentTest.log(LogStatus.PASS, "Admin akses approval izin");
+	@When("Admin access National Holiday")
+	public void admin_akses_national_holiday() {
+	    ntnlHoliday.goToNationalHolidayPage();
+	    extentTest.log(LogStatus.PASS, "Admin access National Holiday page");
 	}
 
-	@And("Admin search data izin")
-	public void admin_search_data_izin() {
-		approvallzinPage.filterData();
-		extentTest.log(LogStatus.PASS, "Admin search data izin");
+	@When("Admin search data Holiday")
+	public void admin_search_data_holiday() {
+		ntnlHoliday.searchData();
+		extentTest.log(LogStatus.PASS, "Admin search data Holiday");
+	}
+	
+	@When("Admin click maximize and minimize layout")
+	public void admin_maximize_and_minimize_layout() {
+	    ntnlHoliday.maxMinLayout();
+	    extentTest.log(LogStatus.PASS, "Admin click maximize and minimize layout");
 	}
 
-	@When("Admin view photo izin")
-	public void admin_view_photo_izin() {
-		approvallzinPage.viewPhoto();
-		extentTest.log(LogStatus.PASS, "Admin view photo izin");
+	@When("Admin add national holiday")
+	public void admin_add_national_holiday() {
+	    ntnlHoliday.addNationalHoliday();
+	    extentTest.log(LogStatus.PASS, "Admin add national holiday");
 	}
 
-	@When("Admin reject izin")
-	public void admin_reject_izin() {
-		approvallzinPage.rejectIzin();
-		extentTest.log(LogStatus.PASS, "Admin reject izin");
+	@When("Admin Edit data national holiday")
+	public void admin_edit_data_national_holiday() {
+	   ntnlHoliday.editData();
+	   extentTest.log(LogStatus.PASS, "Admin Edit data national holiday");
 	}
 
-	@When("Admin approve izin")
-	public void admin_approve_izin() {
-		approvallzinPage.approveIzin();
-		extentTest.log(LogStatus.PASS, "Admin approve izin");
+	@When("Admin delete data national holiday")
+	public void admin_delete_data_national_holiday() {
+	   ntnlHoliday.deleteData();
+	   extentTest.log(LogStatus.PASS, "Admin delete data national holiday");
 	}
 
-	@Then("Admin Success reject, approve, and view photo izin")
-	public void admin_success_reject_approve_and_view_photo_izin() {
-		assertEquals(configurationProperties.getTextApprovalIzin(), approvallzinPage.getTextIzin());
-		extentTest.log(LogStatus.PASS, "Admin Success reject, approve, and view photo izin");
+	@Then("Admin Success add, edit, and delete national holiday")
+	public void admin_success_add_edit_and_delete_national_holiday() {
+	    assertEquals(configurationProperties.getTextnationalHoliday(), ntnlHoliday.TextNationalHoliday());
+	    extentTest.log(LogStatus.PASS, "Admin Success add, edit, and delete national holiday");
 	}
+	
 
 }
