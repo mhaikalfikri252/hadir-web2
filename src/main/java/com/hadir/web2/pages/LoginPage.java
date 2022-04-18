@@ -36,6 +36,7 @@ public class LoginPage {
 	@FindBy(css = "#content > h1")
 	WebElement textDashboard;
 
+
 	@FindBy(css = "#page-container > div > div.right-content > div.login-content > div > strong")
 	WebElement textInvalidLogin;
 

@@ -22,6 +22,9 @@ public class ConfigurationProperties {
 
 	@Value("${textDashboard}")
 	private String textDashboard;
+	
+	@Value("${textIzin}")
+	private String textIzin;
 
 	public String getBrowser() {
 		return browser;
@@ -42,5 +45,11 @@ public class ConfigurationProperties {
 	public String getTextDashboard() {
 		return textDashboard;
 	}
+
+	public String getTextIzin() {
+		return textIzin;
+	}
+	
+	
 
 }
