@@ -11,7 +11,7 @@ public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
 
-	@Value("${username}")
+	@Value("${usernamee}")
 	private String userName;
 
 	@Value("${password}")
@@ -22,6 +22,9 @@ public class ConfigurationProperties {
 
 	@Value("${textDashboard}")
 	private String textDashboard;
+	
+	@Value("${textIzin}")
+	private String textIzin;
 
 	public String getBrowser() {
 		return browser;
@@ -42,5 +45,11 @@ public class ConfigurationProperties {
 	public String getTextDashboard() {
 		return textDashboard;
 	}
+
+	public String getTextIzin() {
+		return textIzin;
+	}
+	
+	
 
 }
