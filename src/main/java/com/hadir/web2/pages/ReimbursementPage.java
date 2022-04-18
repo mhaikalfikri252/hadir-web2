@@ -1,5 +1,6 @@
 package com.hadir.web2.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,12 +17,10 @@ public class ReimbursementPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(linkText = "Reimbursement")
-//	@FindBy(css = "#sidebar > div > ul:nth-child(2) > li.has-sub.closed > a")
+	@FindBy(css = "#sidebar > div > div:nth-child(1) > ul:nth-child(2) > li.has-sub > a")
 	WebElement btnReimbursement;
 
-	@FindBy(linkText = "Payment")
-//	@FindBy(css = "#sidebar > div > ul:nth-child(2) > li.has-sub.expand > ul > li:nth-child(1) > a")
+	@FindBy(css = "#sidebar > div > div:nth-child(1) > ul:nth-child(2) > li.has-sub.expand > ul > li:nth-child(1) > a")
 	WebElement btnPayment;
 
 	@FindBy(css = "#content > div.row > div > div > div:nth-child(3) > form > button")
@@ -30,8 +29,7 @@ public class ReimbursementPage {
 	@FindBy(css = "#data-table-responsive > thead > tr > th.sorting_asc > input[type=checkbox]")
 	WebElement checkBox;
 
-	@FindBy(linkText = "Report")
-//	@FindBy(css = "#sidebar > div > ul:nth-child(2) > li.has-sub.expand > ul > li:nth-child(2) > a")
+	@FindBy(css = "#sidebar > div > div:nth-child(1) > ul:nth-child(2) > li.has-sub.active > ul > li:nth-child(2) > a")
 	WebElement btnReport;
 
 	@FindBy(css = "#content > div.row > div > div > div.panel-heading.ui-sortable-handle > div > a.btn.btn-xs.btn-icon.btn-circle.btn-default")
@@ -58,14 +56,14 @@ public class ReimbursementPage {
 	@FindBy(css = "#data-table-responsive_filter > label > input")
 	WebElement search;
 
-	@FindBy(css = "#data-table-responsive > thead > tr > th.sorting_asc")
+	@FindBy(css = "#data-table-responsive > thead > tr > th:nth-child(1)")
 	WebElement sortNo;
+
+	@FindBy(css = "#data-table-responsive > thead > tr > th.sorting_desc")
+	WebElement sortNoDesc;
 
 	@FindBy(css = "#data-table-responsive > tbody > tr:nth-child(1) > td.f-s-600.text-inverse.sorting_1")
 	WebElement btnPlus;
-
-	@FindBy(css = "#data-table-responsive > tbody > tr.odd.parent > td.f-s-600.text-inverse.sorting_1")
-	WebElement btnMinus;
 
 	@FindBy(css = "#data-table-responsive_next > a")
 	WebElement btnNext;
@@ -73,7 +71,7 @@ public class ReimbursementPage {
 	@FindBy(css = "body > a")
 	WebElement btnScrollUp;
 
-	@FindBy(css = "#data-table-responsive_info")
+	@FindBy(id = "data-table-responsive_info")
 	WebElement textShowEntries;
 
 	public void goToReimbursement() {
@@ -89,7 +87,34 @@ public class ReimbursementPage {
 	}
 
 	public void managePayment() {
-
+		btnMinimize.click();
+		tunggu(1);
+		btnMinimize.click();
+		tunggu(3);
+		btnMaximize.click();
+		tunggu(4);
+		btnMaximize.click();
+		tunggu(2);
+		startDate.sendKeys("01/01/2022");
+		tunggu(2);
+		startDate.sendKeys("18/04/2022");
+		tunggu(1);
+		btnGo.click();
+		tunggu(2);
+		for (int i = 1; i <= 2; i++) {
+			showEntries.sendKeys(Keys.DOWN);
+		}
+		showEntries.sendKeys(Keys.ENTER);
+		tunggu(2);
+		search.sendKeys("test");
+		tunggu(2);
+		checkBox.click();
+		tunggu(2);
+		sortNo.click();
+		tunggu(2);
+		btnApprove.click();
+		tunggu(2);
+		driver.switchTo().alert().dismiss();
 	}
 
 	public void goToReport() {
@@ -99,7 +124,36 @@ public class ReimbursementPage {
 	}
 
 	public void manageReport() {
-
+		btnMinimize.click();
+		tunggu(1);
+		btnMinimize.click();
+		tunggu(3);
+		btnMaximize.click();
+		tunggu(4);
+		btnMaximize.click();
+		tunggu(2);
+		startDate.sendKeys("02/02/2022");
+		tunggu(2);
+		startDate.sendKeys("18/04/2022");
+		tunggu(1);
+		btnGo.click();
+		tunggu(3);
+		btnExport.click();
+		tunggu(4);
+		for (int i = 1; i <= 1; i++) {
+			showEntries.sendKeys(Keys.DOWN);
+		}
+		showEntries.sendKeys(Keys.ENTER);
+		tunggu(2);
+		search.sendKeys("septianyono");
+		tunggu(2);
+		sortNo.click();
+		tunggu(2);
+		btnPlus.click();
+		tunggu(3);
+		btnNext.click();
+		tunggu(3);
+		btnScrollUp.click();
 	}
 
 	public String getTextShowEntries() {

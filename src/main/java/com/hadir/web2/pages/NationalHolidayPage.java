@@ -3,36 +3,35 @@ package com.hadir.web2.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.By.ByTagName;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.hadir.web2.drivers.DriverSingleton;
 
 public class NationalHolidayPage {
-	
+
 	WebDriver driver;
 
 	public NationalHolidayPage() {
 		this.driver = DriverSingleton.getDriver();
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	@FindBy(linkText = "National Holiday")
 	WebElement btnNtnlHoliday;
-	
-//	search
+
+//	Search
 	@FindBy(css = "#data-table-responsive_filter > label > input")
 	WebElement searchData;
-	
-//	max min layout
+
+//	Max Min Layout
 	@FindBy(css = "#content > div.row > div > div > div.panel-heading.ui-sortable-handle > div > a.btn.btn-xs.btn-icon.btn-circle.btn-warning")
-	
+
 	WebElement minimize;
 	@FindBy(css = "#content > div.row > div > div > div.panel-heading.ui-sortable-handle > div > a.btn.btn-xs.btn-icon.btn-circle.btn-default")
 	WebElement maximize;
-	
-//	Add data
+
+//	Add Data
 	@FindBy(css = "#content > div.row > div > div > div.panel-heading.ui-sortable-handle > button")
 	WebElement btnAdd;
 	@FindBy(id = "tanggal")
@@ -41,7 +40,7 @@ public class NationalHolidayPage {
 	WebElement description;
 	@FindBy(css = "#modal_add > div > div > form > div.modal-footer > button.btn.btn-primary")
 	WebElement btnSave;
-	
+
 //	edit data
 	@FindBy(css = "#data-table-responsive > tbody > tr > td:nth-child(3) > a.btn.btn-success.btn-xs")
 	WebElement btnEdit;
@@ -51,39 +50,39 @@ public class NationalHolidayPage {
 	WebElement editDescription;
 	@FindBy(css = "#modal_edit > div > div > form > div.modal-footer > button.btn.btn-primary")
 	WebElement btnSaveEdit;
-	
+
 //	delete data
 	@FindBy(css = "#data-table-responsive > tbody > tr > td:nth-child(3) > a.btn.btn-danger.btn-xs")
 	WebElement btnDelete;
 	@FindBy(css = "#modal_dlt > div > div > form > div.modal-footer > button:nth-child(1)")
 	WebElement btnSubmitDelete;
-	
+
 	@FindBy(css = "#content > div.row > div > div > div:nth-child(3) > div > div > strong")
 	WebElement getText;
-	
+
 	public void goToNationalHolidayPage() {
 		tunggu(3);
 		btnNtnlHoliday.click();
 	}
-	
+
 	public void searchData() {
 		searchData.sendKeys("Rabu");
 	}
 
 	public void maxMinLayout() {
 		tunggu(2);
-		for (int i=1; i<=2; i++) {
+		for (int i = 1; i <= 2; i++) {
 			minimize.click();
 			tunggu(3);
 		}
-				
+
 		tunggu(2);
-		for (int i=1; i<=2; i++) {
+		for (int i = 1; i <= 2; i++) {
 			maximize.click();
 			tunggu(3);
 		}
 	}
-	
+
 	public void addNationalHoliday() {
 		tunggu(1);
 		btnAdd.click();
@@ -94,7 +93,7 @@ public class NationalHolidayPage {
 		tunggu(2);
 		btnSave.click();
 	}
-	
+
 	public void editData() {
 		searchData.sendKeys("adha");
 		tunggu(2);
@@ -108,7 +107,7 @@ public class NationalHolidayPage {
 		tunggu(2);
 		btnSaveEdit.click();
 	}
-	
+
 	public void deleteData() {
 		tunggu(2);
 		searchData.sendKeys("fitri");
@@ -118,11 +117,11 @@ public class NationalHolidayPage {
 		btnSubmitDelete.click();
 		tunggu(2);
 	}
-	
-	public String TextNationalHoliday() {
+
+	public String getTextNationalHoliday() {
 		return getText.getText();
 	}
-	
+
 	public static void tunggu(int detik) {
 		try {
 			Thread.sleep(detik);

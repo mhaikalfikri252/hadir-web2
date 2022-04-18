@@ -31,7 +31,7 @@ public class NationalHolidayStepDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
-	private NationalHolidayPage ntnlHoliday;
+	private NationalHolidayPage nationalHolidayPage;
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportNationalHoliday.html");
 
@@ -42,7 +42,7 @@ public class NationalHolidayStepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
-		ntnlHoliday = new NationalHolidayPage();
+		nationalHolidayPage = new NationalHolidayPage();
 		extentTest = reports.startTest("Testing National Holiday Page");
 	}
 
@@ -80,43 +80,43 @@ public class NationalHolidayStepDefinition {
 
 	@When("Admin access National Holiday")
 	public void admin_akses_national_holiday() {
-		ntnlHoliday.goToNationalHolidayPage();
+		nationalHolidayPage.goToNationalHolidayPage();
 		extentTest.log(LogStatus.PASS, "Admin access National Holiday page");
 	}
 
 	@When("Admin search data Holiday")
 	public void admin_search_data_holiday() {
-		ntnlHoliday.searchData();
+		nationalHolidayPage.searchData();
 		extentTest.log(LogStatus.PASS, "Admin search data Holiday");
 	}
 
 	@When("Admin click maximize and minimize layout")
 	public void admin_maximize_and_minimize_layout() {
-		ntnlHoliday.maxMinLayout();
+		nationalHolidayPage.maxMinLayout();
 		extentTest.log(LogStatus.PASS, "Admin click maximize and minimize layout");
 	}
 
 	@When("Admin add national holiday")
 	public void admin_add_national_holiday() {
-		ntnlHoliday.addNationalHoliday();
+		nationalHolidayPage.addNationalHoliday();
 		extentTest.log(LogStatus.PASS, "Admin add national holiday");
 	}
 
 	@When("Admin Edit data national holiday")
 	public void admin_edit_data_national_holiday() {
-		ntnlHoliday.editData();
+		nationalHolidayPage.editData();
 		extentTest.log(LogStatus.PASS, "Admin Edit data national holiday");
 	}
 
 	@When("Admin delete data national holiday")
 	public void admin_delete_data_national_holiday() {
-		ntnlHoliday.deleteData();
+		nationalHolidayPage.deleteData();
 		extentTest.log(LogStatus.PASS, "Admin delete data national holiday");
 	}
 
 	@Then("Admin Success add, edit, and delete national holiday")
 	public void admin_success_add_edit_and_delete_national_holiday() {
-		assertEquals(configurationProperties.getTextnationalHoliday(), ntnlHoliday.TextNationalHoliday());
+		assertEquals(configurationProperties.getTextNationalHoliday(), nationalHolidayPage.getTextNationalHoliday());
 		extentTest.log(LogStatus.PASS, "Admin Success add, edit, and delete national holiday");
 	}
 

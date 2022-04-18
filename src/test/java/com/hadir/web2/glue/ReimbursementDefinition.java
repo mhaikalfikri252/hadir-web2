@@ -111,7 +111,7 @@ public class ReimbursementDefinition {
 
 	@Then("Admin success export data report")
 	public void admin_success_export_data_report() {
-		assertEquals(configurationProperties.getTextApprovalIzin(), reimbursementPage.getTextShowEntries());
+		assertEquals(configurationProperties.getTextShowEntries(), reimbursementPage.getTextShowEntries());
 		extentTest.log(LogStatus.PASS, "Admin success export data report");
 	}
 
