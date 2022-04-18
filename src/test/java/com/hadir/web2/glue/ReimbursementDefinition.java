@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.hadir.web2.config.AutomationFrameworkConfig;
 import com.hadir.web2.drivers.DriverSingleton;
 import com.hadir.web2.pages.LoginPage;
-import com.hadir.web2.pages.NationalHolidayPage;
+import com.hadir.web2.pages.ReimbursementPage;
 import com.hadir.web2.utils.ConfigurationProperties;
 import com.hadir.web2.utils.Constants;
 import com.hadir.web2.utils.Utils;
@@ -22,18 +22,19 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 @ContextConfiguration(classes = AutomationFrameworkConfig.class)
-public class NationalHolidayStepDefinition {
+public class ReimbursementDefinition {
 
 	private static WebDriver driver;
 	private LoginPage loginPage;
-	private NationalHolidayPage nationalHolidayPage;
+	private ReimbursementPage reimbursementPage;
 	ExtentTest extentTest;
-	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportNationalHoliday.html");
+	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportReimbursement.html");
 
 	@Autowired
 	ConfigurationProperties configurationProperties;
@@ -42,8 +43,8 @@ public class NationalHolidayStepDefinition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
-		nationalHolidayPage = new NationalHolidayPage();
-		extentTest = reports.startTest("Testing National Holiday Page");
+		reimbursementPage = new ReimbursementPage();
+		extentTest = reports.startTest("Testing Reimbursement Page");
 	}
 
 	@AfterStep
@@ -65,59 +66,53 @@ public class NationalHolidayStepDefinition {
 //		driver.quit();
 	}
 
-	@Given("Admin akses url")
-	public void admin_access_url() {
+	@Given("Admin access url hadir2")
+	public void admin_access_url_hadir2() {
 		driver = DriverSingleton.getDriver();
 		driver.get(Constants.URL);
 		extentTest.log(LogStatus.PASS, "Navigating to " + Constants.URL);
 	}
 
-	@When("Admin access login")
-	public void admin_akses_login() {
+	@When("Admin access login page")
+	public void admin_access_login_page() {
 		loginPage.submitLogin(configurationProperties.getUserName(), configurationProperties.getPassword());
 		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
 
-	@When("Admin access National Holiday")
-	public void admin_akses_national_holiday() {
-		nationalHolidayPage.goToNationalHolidayPage();
-		extentTest.log(LogStatus.PASS, "Admin access National Holiday page");
+	@When("Admin access reimbursement")
+	public void admin_access_reimbursement() {
+		reimbursementPage.goToReimbursement();
+		extentTest.log(LogStatus.PASS, "Admin access reimbursement");
 	}
 
-	@When("Admin search data Holiday")
-	public void admin_search_data_holiday() {
-		nationalHolidayPage.searchData();
-		extentTest.log(LogStatus.PASS, "Admin search data Holiday");
+	@And("Admin access payment")
+	public void admin_access_payment() {
+		reimbursementPage.goToPayment();
+		extentTest.log(LogStatus.PASS, "Admin access payment");
 	}
 
-	@When("Admin click maximize and minimize layout")
-	public void admin_maximize_and_minimize_layout() {
-		nationalHolidayPage.maxMinLayout();
-		extentTest.log(LogStatus.PASS, "Admin click maximize and minimize layout");
+	@When("Admin manage payment")
+	public void admin_manage_payment() {
+		reimbursementPage.managePayment();
+		extentTest.log(LogStatus.PASS, "Admin manage payment");
 	}
 
-	@When("Admin add national holiday")
-	public void admin_add_national_holiday() {
-		nationalHolidayPage.addNationalHoliday();
-		extentTest.log(LogStatus.PASS, "Admin add national holiday");
+	@When("Admin access report")
+	public void admin_access_report() {
+		reimbursementPage.goToReport();
+		extentTest.log(LogStatus.PASS, "Admin access report");
 	}
 
-	@When("Admin Edit data national holiday")
-	public void admin_edit_data_national_holiday() {
-		nationalHolidayPage.editData();
-		extentTest.log(LogStatus.PASS, "Admin Edit data national holiday");
+	@When("Admin manage report")
+	public void admin_manage_report() {
+		reimbursementPage.manageReport();
+		extentTest.log(LogStatus.PASS, "Admin manage report");
 	}
 
-	@When("Admin delete data national holiday")
-	public void admin_delete_data_national_holiday() {
-		nationalHolidayPage.deleteData();
-		extentTest.log(LogStatus.PASS, "Admin delete data national holiday");
-	}
-
-	@Then("Admin Success add, edit, and delete national holiday")
-	public void admin_success_add_edit_and_delete_national_holiday() {
-		assertEquals(configurationProperties.getTextNationalHoliday(), nationalHolidayPage.getTextNationalHoliday());
-		extentTest.log(LogStatus.PASS, "Admin Success add, edit, and delete national holiday");
+	@Then("Admin success export data report")
+	public void admin_success_export_data_report() {
+		assertEquals(configurationProperties.getTextShowEntries(), reimbursementPage.getTextShowEntries());
+		extentTest.log(LogStatus.PASS, "Admin success export data report");
 	}
 
 }
