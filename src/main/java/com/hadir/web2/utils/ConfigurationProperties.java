@@ -22,9 +22,12 @@ public class ConfigurationProperties {
 
 	@Value("${textDashboard}")
 	private String textDashboard;
-	
+
 	@Value("${textIzin}")
 	private String textIzin;
+
+	@Value("${textApprovalIzin}")
+	private String textApprovalIzin;
 
 	public String getBrowser() {
 		return browser;
@@ -49,7 +52,9 @@ public class ConfigurationProperties {
 	public String getTextIzin() {
 		return textIzin;
 	}
-	
-	
+
+	public String getTextApprovalIzin() {
+		return textApprovalIzin;
+	}
 
 }

@@ -1,4 +1,4 @@
-Feature: Customer Access to Approval Izin Page
+Feature: User Access to Approval Izin Page
 
   Scenario: Testing Approval Izin Page
     Given Admin access url
@@ -8,5 +8,4 @@ Feature: Customer Access to Approval Izin Page
     And Admin view photo izin
     And Admin reject izin
     And Admin approve izin
-    Then Admin Success reject, approve, and view photo izin 
-    
+    Then Admin Success reject, approve, and view photo izin

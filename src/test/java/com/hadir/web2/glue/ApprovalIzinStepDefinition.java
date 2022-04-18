@@ -8,11 +8,10 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.hadir.web2.config.AutomationFrameworkConfig;
 import com.hadir.web2.drivers.DriverSingleton;
-import com.hadir.web2.pages.Approval_lzin;
+import com.hadir.web2.pages.ApprovallzinPage;
 import com.hadir.web2.pages.LoginPage;
 import com.hadir.web2.utils.ConfigurationProperties;
 import com.hadir.web2.utils.Constants;
-import com.hadir.web2.utils.TestCases;
 import com.hadir.web2.utils.Utils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -29,11 +28,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 @ContextConfiguration(classes = AutomationFrameworkConfig.class)
-public class Approval_Izin_Step_Definition {
-	
+public class ApprovalIzinStepDefinition {
+
 	private static WebDriver driver;
 	private LoginPage loginPage;
-	private Approval_lzin aprIzin;
+	private ApprovallzinPage approvallzinPage;
 	ExtentTest extentTest;
 	static ExtentReports reports = new ExtentReports("src/main/resources/TestReportApproveIzin.html");
 
@@ -44,7 +43,7 @@ public class Approval_Izin_Step_Definition {
 	public void initializeObjects() {
 		DriverSingleton.getInstance(configurationProperties.getBrowser());
 		loginPage = new LoginPage();
-		aprIzin = new Approval_lzin();
+		approvallzinPage = new ApprovallzinPage();
 		extentTest = reports.startTest("Testing Approval Izin Page");
 	}
 
@@ -67,7 +66,6 @@ public class Approval_Izin_Step_Definition {
 //		driver.quit();
 	}
 
-	
 	@Given("Admin access url")
 	public void customer_access_url() {
 		driver = DriverSingleton.getDriver();
@@ -78,48 +76,43 @@ public class Approval_Izin_Step_Definition {
 	@When("Admin akses login")
 	public void customer_akses_login() {
 		loginPage.submitLogin(configurationProperties.getUserName(), configurationProperties.getPassword());
-		extentTest.log(LogStatus.PASS, "Customer klik login button");
+		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
 
 	@When("Admin akses approval izin")
 	public void admin_akses_approval_izin_button() {
-	    aprIzin.go_to_approval_izin_pages();
-	    extentTest.log(LogStatus.PASS, "Admin akses approval izin");
+		approvallzinPage.goToApprovalIzinPage();
+		extentTest.log(LogStatus.PASS, "Admin akses approval izin");
 	}
-	
-	 @And("Admin search data izin")
-	 public void admin_search_data_izin() {
-		 aprIzin.filterData();
-		 extentTest.log(LogStatus.PASS, "Admin search data izin");
-	 }
 
-	 @When("Admin view photo izin")
-		public void admin_view_photo_izin() {
-			aprIzin.viewPhoto();
-			extentTest.log(LogStatus.PASS, "Admin view photo izin");
-		}
-	 
+	@And("Admin search data izin")
+	public void admin_search_data_izin() {
+		approvallzinPage.filterData();
+		extentTest.log(LogStatus.PASS, "Admin search data izin");
+	}
+
+	@When("Admin view photo izin")
+	public void admin_view_photo_izin() {
+		approvallzinPage.viewPhoto();
+		extentTest.log(LogStatus.PASS, "Admin view photo izin");
+	}
+
 	@When("Admin reject izin")
 	public void admin_reject_izin() {
-		aprIzin.rejectIzin();
+		approvallzinPage.rejectIzin();
 		extentTest.log(LogStatus.PASS, "Admin reject izin");
 	}
 
 	@When("Admin approve izin")
 	public void admin_approve_izin() {
-	    aprIzin.approveIzin();
-	    extentTest.log(LogStatus.PASS, "Admin approve izin");
+		approvallzinPage.approveIzin();
+		extentTest.log(LogStatus.PASS, "Admin approve izin");
 	}
 
 	@Then("Admin Success reject, approve, and view photo izin")
 	public void admin_success_reject_approve_and_view_photo_izin() {
-//	    assertEquals(configurationProperties.getTextIzin(), aprIzin.getTxtIzin());
-		assertEquals("Approval Izin", aprIzin.getTxtIzin());
+		assertEquals(configurationProperties.getTextApprovalIzin(), approvallzinPage.getTextIzin());
 		extentTest.log(LogStatus.PASS, "Admin Success reject, approve, and view photo izin");
 	}
-	
-	
-	
-	
 
 }
