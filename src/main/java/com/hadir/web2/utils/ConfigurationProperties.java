@@ -35,6 +35,9 @@ public class ConfigurationProperties {
 	@Value("${textShowEntries}")
 	private String textShowEntries;
 
+	@Value("${textSuccessAdd}")
+	private String textSuccessAdd;
+
 	@Value("${textShowEntriesReport}")
 	private String textShowEntriesReport;
 
@@ -76,6 +79,10 @@ public class ConfigurationProperties {
 
 	public String getTextShowEntriesReport() {
 		return textShowEntriesReport;
+	}
+
+	public String getTextSuccessAdd() {
+		return textSuccessAdd;
 	}
 
 }
