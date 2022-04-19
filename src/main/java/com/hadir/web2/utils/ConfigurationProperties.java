@@ -34,6 +34,11 @@ public class ConfigurationProperties {
 
 	@Value("${textShowEntries}")
 	private String textShowEntries;
+	
+	@Value("${textSuccessAdd}")
+	private String textSuccessAdd;
+	
+	
 
 	public String getBrowser() {
 		return browser;
@@ -70,5 +75,11 @@ public class ConfigurationProperties {
 	public String getTextShowEntries() {
 		return textShowEntries;
 	}
+
+	public String getTextSuccessAdd() {
+		return textSuccessAdd;
+	}
+	
+	
 
 }
