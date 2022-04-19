@@ -22,6 +22,7 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -78,37 +79,37 @@ public class NationalHolidayStepDefinition {
 		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
 
-	@When("Admin access National Holiday")
+	@And("Admin access National Holiday")
 	public void admin_akses_national_holiday() {
 		nationalHolidayPage.goToNationalHolidayPage();
 		extentTest.log(LogStatus.PASS, "Admin access National Holiday page");
 	}
 
-	@When("Admin search data Holiday")
+	@And("Admin search data Holiday")
 	public void admin_search_data_holiday() {
 		nationalHolidayPage.searchData();
 		extentTest.log(LogStatus.PASS, "Admin search data Holiday");
 	}
 
-	@When("Admin click maximize and minimize layout")
+	@And("Admin click maximize and minimize layout")
 	public void admin_maximize_and_minimize_layout() {
 		nationalHolidayPage.maxMinLayout();
 		extentTest.log(LogStatus.PASS, "Admin click maximize and minimize layout");
 	}
 
-	@When("Admin add national holiday")
+	@And("Admin add national holiday")
 	public void admin_add_national_holiday() {
 		nationalHolidayPage.addNationalHoliday();
 		extentTest.log(LogStatus.PASS, "Admin add national holiday");
 	}
 
-	@When("Admin Edit data national holiday")
+	@And("Admin Edit data national holiday")
 	public void admin_edit_data_national_holiday() {
 		nationalHolidayPage.editData();
 		extentTest.log(LogStatus.PASS, "Admin Edit data national holiday");
 	}
 
-	@When("Admin delete data national holiday")
+	@And("Admin delete data national holiday")
 	public void admin_delete_data_national_holiday() {
 		nationalHolidayPage.deleteData();
 		extentTest.log(LogStatus.PASS, "Admin delete data national holiday");
@@ -116,7 +117,7 @@ public class NationalHolidayStepDefinition {
 
 	@Then("Admin Success add, edit, and delete national holiday")
 	public void admin_success_add_edit_and_delete_national_holiday() {
-		assertEquals(configurationProperties.getTextNationalHoliday(), nationalHolidayPage.getTextNationalHoliday());
+		assertEquals(configurationProperties.getTextSuccessAdd(), nationalHolidayPage.getTextNationalHoliday());
 		extentTest.log(LogStatus.PASS, "Admin Success add, edit, and delete national holiday");
 	}
 

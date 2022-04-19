@@ -41,7 +41,7 @@ public class NationalHolidayPage {
 	@FindBy(css = "#modal_add > div > div > form > div.modal-footer > button.btn.btn-primary")
 	WebElement btnSave;
 
-//	edit data
+//	Edit Data
 	@FindBy(css = "#data-table-responsive > tbody > tr > td:nth-child(3) > a.btn.btn-success.btn-xs")
 	WebElement btnEdit;
 	@FindBy(id = "tanggal1")
@@ -51,7 +51,7 @@ public class NationalHolidayPage {
 	@FindBy(css = "#modal_edit > div > div > form > div.modal-footer > button.btn.btn-primary")
 	WebElement btnSaveEdit;
 
-//	delete data
+//	Delete Data
 	@FindBy(css = "#data-table-responsive > tbody > tr > td:nth-child(3) > a.btn.btn-danger.btn-xs")
 	WebElement btnDelete;
 	@FindBy(css = "#modal_dlt > div > div > form > div.modal-footer > button:nth-child(1)")

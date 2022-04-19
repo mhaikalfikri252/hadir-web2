@@ -79,7 +79,7 @@ public class ApprovalIzinStepDefinition {
 		extentTest.log(LogStatus.PASS, "Admin klik login button");
 	}
 
-	@When("Admin akses approval izin")
+	@And("Admin akses approval izin")
 	public void admin_akses_approval_izin_button() {
 		approvallzinPage.goToApprovalIzinPage();
 		extentTest.log(LogStatus.PASS, "Admin akses approval izin");
@@ -91,19 +91,19 @@ public class ApprovalIzinStepDefinition {
 		extentTest.log(LogStatus.PASS, "Admin search data izin");
 	}
 
-	@When("Admin view photo izin")
+	@And("Admin view photo izin")
 	public void admin_view_photo_izin() {
 		approvallzinPage.viewPhoto();
 		extentTest.log(LogStatus.PASS, "Admin view photo izin");
 	}
 
-	@When("Admin reject izin")
+	@And("Admin reject izin")
 	public void admin_reject_izin() {
 		approvallzinPage.rejectIzin();
 		extentTest.log(LogStatus.PASS, "Admin reject izin");
 	}
 
-	@When("Admin approve izin")
+	@And("Admin approve izin")
 	public void admin_approve_izin() {
 		approvallzinPage.approveIzin();
 		extentTest.log(LogStatus.PASS, "Admin approve izin");

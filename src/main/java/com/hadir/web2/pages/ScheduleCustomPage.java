@@ -47,7 +47,7 @@ public class ScheduleCustomPage {
 	@FindBy(css = "#content > div.row > div > div > div:nth-child(4) > div > div > strong")
 	WebElement txtSuccessAdd;
 
-	// Fitur filter
+	// Fitur Filter
 	@FindBy(id = "startdate")
 	WebElement inputStartDate;
 
@@ -57,7 +57,7 @@ public class ScheduleCustomPage {
 	@FindBy(id = "filter")
 	WebElement btnFilter;
 
-	public void go_to_menu_schedule_custom() {
+	public void goToScheduleCustom() {
 		tunggu(2);
 		btnScheduleCustom.click();
 	}
@@ -72,7 +72,7 @@ public class ScheduleCustomPage {
 //		
 //	}
 
-	public void menambah_data_user() {
+	public void menambahDataUser() {
 		tunggu(2);
 		btnExpand.click();
 		tunggu(2);
@@ -80,7 +80,6 @@ public class ScheduleCustomPage {
 		tunggu(2);
 		btnAdd.click();
 		tunggu(2);
-
 		addTanggal.sendKeys("25/04/2022");
 		tunggu(2);
 		addJamMasuk.sendKeys("0900");

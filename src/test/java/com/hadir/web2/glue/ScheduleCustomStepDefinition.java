@@ -81,7 +81,7 @@ public class ScheduleCustomStepDefinition {
 
 	@And("Admin mengakses menu schedule custom")
 	public void admin_mengakses_menu_schedule_custom() {
-		scheduleCustomPage.go_to_menu_schedule_custom();
+		scheduleCustomPage.goToScheduleCustom();
 		extentTest.log(LogStatus.PASS, "Admin mengakses menu schedule custom");
 	}
 
@@ -93,7 +93,7 @@ public class ScheduleCustomStepDefinition {
 //	
 	@And("Admin menambah data absen user")
 	public void admin_menambah_data_absen_user() {
-		scheduleCustomPage.menambah_data_user();
+		scheduleCustomPage.menambahDataUser();
 		extentTest.log(LogStatus.PASS, "Admin menambah data absen user");
 	}
 
