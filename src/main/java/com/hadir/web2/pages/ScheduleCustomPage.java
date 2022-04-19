@@ -28,7 +28,7 @@ public class ScheduleCustomPage {
 	@FindBy(css = "#content > div.row > div > div > div.panel-body.bg-black.text-white > div > div.col-md-2 > button")
 	WebElement btnAdd;
 
-	//Form Add
+	// Form Add
 	@FindBy(css = "#absen_tgl3")
 	WebElement addTanggal;
 
@@ -43,26 +43,25 @@ public class ScheduleCustomPage {
 
 	@FindBy(css = "#modalAdd > div > div > div.modal-body > form > fieldset > button")
 	WebElement btnSave;
-	
+
 	@FindBy(css = "#content > div.row > div > div > div:nth-child(4) > div > div > strong")
 	WebElement txtSuccessAdd;
-	
-	//Fitur filter
+
+	// Fitur filter
 	@FindBy(id = "startdate")
 	WebElement inputStartDate;
-	
+
 	@FindBy(id = "enddate")
 	WebElement inputEndDate;
-	
+
 	@FindBy(id = "filter")
 	WebElement btnFilter;
-
 
 	public void go_to_menu_schedule_custom() {
 		tunggu(2);
 		btnScheduleCustom.click();
 	}
-	
+
 //	public void fitur_filter() {
 //		tunggu(2);
 //		inputStartDate.sendKeys("25/04/2022");
@@ -95,18 +94,16 @@ public class ScheduleCustomPage {
 		addStatus.sendKeys(Keys.ENTER);
 		tunggu(2);
 		btnSave.click();
-		
+
 	}
-	
-		
+
 	public String getTextSuccess() {
 		return txtSuccessAdd.getText();
 	}
-	
 
 	public static void tunggu(int detik) {
 		try {
-			Thread.sleep(detik);
+			Thread.sleep(detik * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

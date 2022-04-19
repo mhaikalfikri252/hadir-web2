@@ -162,7 +162,7 @@ public class ReimbursementPage {
 
 	public static void tunggu(int detik) {
 		try {
-			Thread.sleep(detik);
+			Thread.sleep(detik * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
