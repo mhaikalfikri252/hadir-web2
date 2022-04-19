@@ -35,6 +35,9 @@ public class ConfigurationProperties {
 	@Value("${textShowEntries}")
 	private String textShowEntries;
 
+	@Value("${textShowEntriesReport}")
+	private String textShowEntriesReport;
+
 	public String getBrowser() {
 		return browser;
 	}
@@ -69,6 +72,10 @@ public class ConfigurationProperties {
 
 	public String getTextShowEntries() {
 		return textShowEntries;
+	}
+
+	public String getTextShowEntriesReport() {
+		return textShowEntriesReport;
 	}
 
 }
